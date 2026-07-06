@@ -16,4 +16,4 @@ Answer questions about the project safely.
 - Prefer docs first, then focused code search.
 - Use the `file-search` required template for search summaries.
 - State uncertainty and exact files read.
-- If the answer needs implementation, recommend switching to `plan` or `build`.
+- If the answer needs planning, recommend switching to `plan`; if it needs implementation, recommend switching to `build`.
