@@ -1,54 +1,45 @@
 ---
 name: implementation-review
-description: Review the final diff against the original goal, plan, and verification results.
+description: Implementation review, final diff review, or logic check. Use to compare code changes against the original goal, plan, and verification output.
 ---
-
-# Implementation Review: $ARGUMENTS
-
-Review the completed implementation before final response.
+# Implementation Review
 
 ## Required inputs
-
-- Original user request
-- Approved plan or TASK_CONTEXT.md
+- Original request
+- Plan / `PLAN-*.md` / `TASK_CONTEXT.md`
 - Files changed
-- Git diff
-- Commands run
-- Test/lint/typecheck output
+- Diff summary
+- Commands run and output
 
-## Checklist
+Checklist:
+1. Scope: only intended files changed?
+2. Correctness: behavior matches the plan?
+3. Logic: implementation is coherent and not accidental?
+4. Contracts: APIs/types/config/public behavior preserved?
+5. Regression: likely breakages?
+6. Verification: relevant checks run and passed?
 
-1. Scope check
-   - Did implementation only touch planned files?
-   - Are there unrelated changes?
-   - Did it solve the actual user request?
+## Required output template
 
-2. Correctness check
-   - Does behavior match acceptance criteria?
-   - Are edge cases handled?
-   - Are errors handled explicitly?
-   - Are types/interfaces/contracts preserved?
+```markdown
+## Verdict
+- pass / pass-with-risk / fail
 
-3. Regression check
-   - Could this break existing behavior?
-   - Are public APIs changed?
-   - Are migrations/config/docs needed?
+## Changed files reviewed
+- `<path>` — <review scope>
 
-4. Verification check
-   - Were relevant commands run?
-   - Did any command fail?
-   - If not run, explain why.
+## Blocking issues
+- <issue, exact path/line if possible, why it blocks>
 
-5. Final risk assessment
-   - Remaining risks
-   - Confidence level
-   - Recommended next action
+## Minimal required fixes
+- <smallest fix that resolves the issue>
 
-## Output
+## Verification summary
+- `<command>` — <result and what it proved>
 
-- Verdict: pass / pass-with-risk / fail
-- Changed files reviewed
-- Issues found
-- Required fixes before final
-- Verification summary
-- Confidence
+## Remaining risks
+- <risk or `None`>
+
+## Confidence
+- low / medium / high
+```
